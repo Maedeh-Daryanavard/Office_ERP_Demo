@@ -48,7 +48,7 @@ This feature helps automate absence management, reduces manual communication, an
 ![leave list Page](screenshots/student_absent_approval_reject_email.png)
 ### Program Management Page
 The Program Management module allows administrators to create and manage school programs or courses. It includes options to add a new program and view the program list. Program records can be searched, edited, and deleted through the system.
-![Program Management Page](screenshots/Program_management.png)
+![Program Management Page](screenshots/program_management.png)
 
 ## Goal
 
