@@ -53,4 +53,5 @@ The Program Management module allows administrators to create and manage school 
 ## Goal
 
 Through this project, I practiced building a complete web application using Python and Flask. I learned how to create routes, connect the application to a database, design templates, organize static files, and structure a project for deployment and GitHub portfolio presentation.
-Check the DEMO file to explore more features such as adding, deleting, managing, and generating reports for employees and students. Enjoy!
+
+Check the DEMO file to explore more features such as adding, deleting, managing, and generating reports for employees and students. Enjoy!😊 👍
