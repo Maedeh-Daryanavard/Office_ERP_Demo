@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-header bg-dark text-white">
+        <h4>Student Details</h4>
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                {% if student.image %}
+                    <img src="/static/uploads/students/{{ student.image }}"
+                         class="img-fluid rounded shadow mb-3">
+                {% else %}
+                    <p>No image uploaded</p>
+                {% endif %}
+            </div>
+
+            <div class="col-md-9">
+                <h3>{{ student.first_name }} {{ student.last_name }}</h3>
+
+                <p><strong>Email:</strong> {{ student.email }}</p>
+                <p><strong>Phone:</strong> {{ student.phone }}</p>
+                <p><strong>Date of Birth:</strong> {{ student.date_of_birth }}</p>
+                <p><strong>Gender:</strong> {{ student.gender }}</p>
+                <p><strong>Course:</strong> {{ student.course }}</p>
+                <p><strong>Registration Date:</strong> {{ student.registration_date }}</p>
+                <p><strong>Address:</strong> {{ student.address }}</p>
+
+                {% if student.education_document %}
+                    <p>
+                        <strong>Education Document:</strong>
+                        <a href="/static/uploads/documents/{{ student.education_document }}" target="_blank">
+                            View Document
+                        </a>
+                    </p>
+                {% else %}
+                    <p><strong>Education Document:</strong> Not uploaded</p>
+                {% endif %}
+
+                <a href="/students" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-header bg-warning d-flex justify-content-between">
+        <h4>Student Absence List</h4>
+        <a href="/student-absence" class="btn btn-light btn-sm">New Absence</a>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for absence in absences %}
+                <tr>
+                    <td>{{ absence.first_name }} {{ absence.last_name }}</td>
+                    <td>{{ absence.email }}</td>
+                    <td>{{ absence.course }}</td>
+                    <td>{{ absence.start_date }}</td>
+                    <td>{{ absence.end_date }}</td>
+                    <td>{{ absence.reason }}</td>
+                    <td>
+                        <span class="badge bg-secondary">{{ absence.status }}</span>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-success btn-sm"
+                           onclick="approveStudentAbsence('{{ absence.id }}')">
+                           Approve
+                        </a>
+
+                        <a href="#" class="btn btn-warning btn-sm"
+                           onclick="rejectStudentAbsence('{{ absence.id }}')">
+                           Reject
+                        </a>
+
+                        <a href="/delete-student-absence/{{ absence.id }}"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Delete this absence request?')">
+                           Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function approveStudentAbsence(id) {
+    let sendEmail = confirm("Absence will be approved. Do you want to send an email to the student?");
+
+    if (sendEmail) {
+        window.location.href = "/approve-student-absence/" + id + "?send_email=yes";
+    } else {
+        window.location.href = "/approve-student-absence/" + id + "?send_email=no";
+    }
+}
+
+function rejectStudentAbsence(id) {
+    let sendEmail = confirm("Absence will be rejected. Do you want to send an email to the student?");
+
+    if (sendEmail) {
+        window.location.href = "/reject-student-absence/" + id + "?send_email=yes";
+    } else {
+        window.location.href = "/reject-student-absence/" + id + "?send_email=no";
+    }
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-header bg-info text-white d-flex justify-content-between">
+        <h4>Student List</h4>
+        <a href="/register-student" class="btn btn-light btn-sm">Add Student</a>
+    </div>
+
+    <div class="card-body">
+
+        <form method="GET" class="row mb-3">
+            <div class="col-md-10">
+                <input type="text" name="search" class="form-control"
+                       placeholder="Search by name, email, or course"
+                       value="{{ search }}">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100">Search</button>
+            </div>
+        </form>
+
+        <table class="table table-bordered table-striped align-middle">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>
+                        {% if student.image %}
+                            <img src="/static/uploads/students/{{ student.image }}"
+                                 width="60" height="60"
+                                 class="rounded-circle object-fit-cover">
+                        {% else %}
+                            No Image
+                        {% endif %}
+                    </td>
+
+                    <td>{{ student.first_name }} {{ student.last_name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.course }}</td>
+                    <td>{{ student.phone }}</td>
+
+                    <td>
+                        <a href="/student-details/{{ student.id }}" class="btn btn-primary btn-sm">View</a>
+                        <a href="/edit-student/{{ student.id }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/delete-student/{{ student.id }}"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Delete this student?')">
+                           Delete
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

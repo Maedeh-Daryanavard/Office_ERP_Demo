@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card shadow">
+    <div class="card-header bg-dark text-white">
+        <h4>Leave List</h4>
+        <a href="/export-leaves" class="btn btn-light btn-sm">Export CSV</a>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Department</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for leave in leaves %}
+                <tr>
+                    <td>{{ leave.name }}</td>
+                    <td>{{ leave.department }}</td>
+                    <td>{{ leave.start_date }}</td>
+                    <td>{{ leave.end_date }}</td>
+                    <td>{{ leave.reason }}</td>
+                    <td>
+                        <span class="badge bg-secondary">{{ leave.status }}</span>
+                    </td>
+                    <td>
+                        <!-- <a href="/approve/{{ leave.id }}" class="btn btn-success btn-sm">Approve</a>
+                        <a href="/reject/{{ leave.id }}" class="btn btn-warning btn-sm">Reject</a> -->
+                        <a href="#"
+                            class="btn btn-success btn-sm"
+                            onclick="approveLeave('{{ leave.id }}')">
+                            Approve
+                        </a>
+
+                        <a href="#"
+                            class="btn btn-warning btn-sm"
+                            onclick="rejectLeave('{{ leave.id }}')">
+                            Reject
+                        </a>
+                        <a href="/delete/{{ leave.id }}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+function approveLeave(id) {
+    let sendEmail = confirm("Leave will be approved. Do you want to send an email to the employee?");
+    
+    if (sendEmail) {
+        window.location.href = "/approve/" + id + "?send_email=yes";
+    } else {
+        window.location.href = "/approve/" + id + "?send_email=no";
+    }
+}
+
+function rejectLeave(id) {
+    let sendEmail = confirm("Leave will be rejected. Do you want to send an email to the employee?");
+    
+    if (sendEmail) {
+        window.location.href = "/reject/" + id + "?send_email=yes";
+    } else {
+        window.location.href = "/reject/" + id + "?send_email=no";
+    }
+}
+</script>
+{% endblock %}

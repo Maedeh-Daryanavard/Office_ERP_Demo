@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-header bg-success text-white">
+        <h4>Student Absence Request</h4>
+    </div>
+
+    <div class="card-body">
+        <form method="POST">
+
+            <div class="mb-3">
+                <label>Student</label>
+                <select name="student_id" class="form-control" required>
+                    <option value="">Select Student</option>
+                    {% for student in students %}
+                        <option value="{{ student.id }}">
+                            {{ student.first_name }} {{ student.last_name }} - {{ student.course }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Start Date</label>
+                <input type="date" name="start_date" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label>End Date</label>
+                <input type="date" name="end_date" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Reason</label>
+                <textarea name="reason" class="form-control" required></textarea>
+            </div>
+
+            <button class="btn btn-success">Submit Absence</button>
+            <a href="/student-management" class="btn btn-secondary">Back</a>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

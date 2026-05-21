@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow"><div class="card-header bg-primary text-white"><h4>Add Equipment</h4></div><div class="card-body">
+<form method="POST">
+  <div class="mb-3"><label>Equipment Name</label><input type="text" name="equipment_name" class="form-control" required></div>
+  <div class="mb-3"><label>Category</label><input type="text" name="category" class="form-control" placeholder="Example: Computer, Furniture"></div>
+  <div class="mb-3"><label>Quantity</label><input type="number" name="quantity" class="form-control" required></div>
+  <div class="mb-3"><label>Purchase Date</label><input type="date" name="purchase_date" class="form-control"></div>
+  <div class="mb-3"><label>Status</label><select name="status" class="form-control"><option>Available</option><option>In Use</option><option>Damaged</option><option>Under Maintenance</option></select></div>
+  <div class="mb-3"><label>Notes</label><textarea name="notes" class="form-control"></textarea></div>
+  <button class="btn btn-primary">Save Equipment</button> <a href="/equipment-management" class="btn btn-secondary">Back</a>
+</form></div></div>
+{% endblock %}

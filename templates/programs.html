@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow"><div class="card-header bg-info text-white d-flex justify-content-between"><h4>Program List</h4><a href="/add-program" class="btn btn-light btn-sm">Add Program</a></div><div class="card-body">
+<form method="GET" class="row mb-3"><div class="col-md-10"><input type="text" name="search" class="form-control" placeholder="Search by name, code, or duration" value="{{ search }}"></div><div class="col-md-2"><button class="btn btn-primary w-100">Search</button></div></form>
+<table class="table table-bordered table-striped align-middle"><thead><tr><th>Name</th><th>Code</th><th>Duration</th><th>Fee</th><th>Description</th><th>Actions</th></tr></thead><tbody>
+{% for program in programs %}<tr><td>{{ program.program_name }}</td><td>{{ program.program_code }}</td><td>{{ program.duration }}</td><td>{{ program.fee }}</td><td>{{ program.description }}</td><td><a href="/edit-program/{{ program.id }}" class="btn btn-warning btn-sm">Edit</a> <a href="/delete-program/{{ program.id }}" class="btn btn-danger btn-sm" onclick="return confirm('Delete this program?')">Delete</a></td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}

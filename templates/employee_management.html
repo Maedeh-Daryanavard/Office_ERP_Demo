@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+    <h1 class="fw-bold">Employee Management</h1>
+    <p class="text-muted">
+        Manage employee registration, leave requests, and employee reports.
+    </p>
+</div>
+
+<div class="row g-4">
+
+    <div class="col-md-3">
+        <div class="card shadow h-100 text-center">
+            <div class="card-body d-flex flex-column">
+                <div class="display-4 mb-3">👤</div>
+                <h5>Register Employee</h5>
+                <p class="text-muted">Add a new employee to the system.</p>
+                <a href="/register" class="btn btn-primary mt-auto">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow h-100 text-center">
+            <div class="card-body d-flex flex-column">
+                <div class="display-4 mb-3">📝</div>
+                <h5>Request Leave</h5>
+                <p class="text-muted">Submit a leave request for an employee.</p>
+                <a href="/request-leave" class="btn btn-success mt-auto">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow h-100 text-center">
+            <div class="card-body d-flex flex-column">
+                <div class="display-4 mb-3">📋</div>
+                <h5>Leave List</h5>
+                <p class="text-muted">View, approve, reject, or delete leave requests.</p>
+                <a href="/leaves" class="btn btn-warning mt-auto">Open</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card shadow h-100 text-center">
+            <div class="card-body d-flex flex-column">
+                <div class="display-4 mb-3">👥</div>
+                <h5>Employee List</h5>
+                <p class="text-muted">View, search, edit, or delete employees.</p>
+                <a href="/employees" class="btn btn-info mt-auto">Open</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="mt-4">
+    <a href="/" class="btn btn-secondary">Back to Office Dashboard</a>
+</div>
+
+{% endblock %}

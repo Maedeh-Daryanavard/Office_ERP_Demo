@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow"><div class="card-header bg-warning"><h4>Edit Equipment</h4></div><div class="card-body">
+<form method="POST">
+  <div class="mb-3"><label>Equipment Name</label><input type="text" name="equipment_name" class="form-control" value="{{ item.equipment_name }}" required></div>
+  <div class="mb-3"><label>Category</label><input type="text" name="category" class="form-control" value="{{ item.category }}"></div>
+  <div class="mb-3"><label>Quantity</label><input type="number" name="quantity" class="form-control" value="{{ item.quantity }}" required></div>
+  <div class="mb-3"><label>Purchase Date</label><input type="date" name="purchase_date" class="form-control" value="{{ item.purchase_date }}"></div>
+  <div class="mb-3"><label>Status</label><select name="status" class="form-control"><option {% if item.status == 'Available' %}selected{% endif %}>Available</option><option {% if item.status == 'In Use' %}selected{% endif %}>In Use</option><option {% if item.status == 'Damaged' %}selected{% endif %}>Damaged</option><option {% if item.status == 'Under Maintenance' %}selected{% endif %}>Under Maintenance</option></select></div>
+  <div class="mb-3"><label>Notes</label><textarea name="notes" class="form-control">{{ item.notes }}</textarea></div>
+  <button class="btn btn-warning">Update Equipment</button> <a href="/equipment" class="btn btn-secondary">Back</a>
+</form></div></div>
+{% endblock %}
