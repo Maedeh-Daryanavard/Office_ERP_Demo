@@ -1,5 +1,5 @@
 # Office_ERP_Demo
-This project is a DEMO of School Management System built using Python, Flask, HTML, CSS, and SQLite. The application was developed to manage school administrative operations including employee management and record organization. The project demonstrates practical experience in backend development, database integration, routing, templates, and full web application structure using Flask.
+This project is a DEMO of Office Management System built using Python, Flask, HTML, CSS, and SQLite. The application was developed to manage Office/school administrative operations including employee management and record organization. The project demonstrates practical experience in backend development, database integration, routing, templates, and full web application structure using Flask.
 This project is organized using a simple Flask web application structure. The main application logic is written in `app.py`, while the user interface pages are stored inside the `templates/` folder and styling/assets are stored in the `static/` folder.
 
 ### Main Components
